@@ -1,7 +1,21 @@
-'use client'; //to do some validations
+'use client';
+import addTransaction from '@/app/actions/addTransaction';
+
+//to do some validations
 const AddTransaction = () => {
   const clientAction = async (formData: FormData) => {
-    console.log(formData.get('text'), formData.get('amount'));
+    // console.log(formData.get('text'), formData.get('amount'));
+    //   const result = await addTransaction(formData);
+    //   console.log(result);
+      const { data, error } = await addTransaction(formData);
+      
+    if (error) {
+      alert(error);
+    } else {
+      alert('Transaction added successfully!');
+      //data = {data:{textValue: 'text', amountValue: 100}} error = error();
+      console.log(data);
+    }
   };
   return (
     <div className="add-transaction">
